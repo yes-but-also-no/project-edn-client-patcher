@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="mem">
+      <UniqueIdentifier>{ee793e41-7db3-4df0-aa83-18af1a67e00e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{31e0c3fe-b881-404f-8689-5c3bc587c453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="proc">
+      <UniqueIdentifier>{6f30fb8b-4d3b-47bd-bf71-2cb0b2dd160e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game_classes">
+      <UniqueIdentifier>{20861187-61e9-42d3-8e8e-e2d235da3793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game_classes\FPacketSender">
+      <UniqueIdentifier>{592ff8dc-d740-45bb-8bec-c8e50ebc7e3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui">
+      <UniqueIdentifier>{ce6e7c48-e674-4d6e-9184-816a0b4e5260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\dx">
+      <UniqueIdentifier>{31b5a269-9c38-4dfa-b609-2098c8a59c11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game_classes\NCWnd">
+      <UniqueIdentifier>{53c30f04-f028-473f-a294-d2e40d2f0866}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mem.h">
+      <Filter>mem</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="proc.h">
+      <Filter>proc</Filter>
+    </ClInclude>
+    <ClInclude Include="edn_gf.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>gui\dx</Filter>
+    </ClInclude>
+    <ClInclude Include="IATHook.h">
+      <Filter>gui\dx</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory.h">
+      <Filter>gui\dx</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="FPacketSender.h">
+      <Filter>game_classes\FPacketSender</Filter>
+    </ClInclude>
+    <ClInclude Include="NCWnd.h">
+      <Filter>game_classes\NCWnd</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="edn_gf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mem.cpp">
+      <Filter>mem</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="proc.cpp">
+      <Filter>proc</Filter>
+    </ClCompile>
+    <ClCompile Include="FPacketSender.cpp">
+      <Filter>game_classes\FPacketSender</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>gui\dx</Filter>
+    </ClCompile>
+    <ClCompile Include="IATHook.cpp">
+      <Filter>gui\dx</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory.cpp">
+      <Filter>gui\dx</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="NCWnd.cpp">
+      <Filter>game_classes\NCWnd</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
