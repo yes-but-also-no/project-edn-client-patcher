@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Memory.h"
+#include "loguru.hpp"
 
 IATHook::IATHook(Console * con)
 {
@@ -34,11 +35,11 @@ void IATHook::Init(char * sModule, void * pHook, char * sSymbol)
 	this->sSymbol = sSymbol;
 	pFunctionPtr = (uintptr_t)FindInIAT(sSymbol, this->hModule, con);
 	if (!pFunctionPtr) {
-		con->WriteF("Cound not find function %s\n", sSymbol);
+		LOG_F(INFO, "Cound not find function %s\n", sSymbol);
 	}
 	else {
 		pOldFunc = *(uintptr_t*)pFunctionPtr;
-		con->WriteF("Found %s at $p\n", sSymbol, pFunctionPtr);
+		LOG_F(INFO, "Found %s at $p\n", sSymbol, pFunctionPtr);
 	}
 }
 
@@ -49,11 +50,11 @@ void IATHook::Init(HMODULE hModule, void * pHook, char * sSymbol)
 	this->sSymbol = sSymbol;
 	pFunctionPtr = (uintptr_t)FindInIAT(sSymbol, this->hModule, con);
 	if (!pFunctionPtr) {
-		con->WriteF("Cound not find function %s\n", sSymbol);
+		LOG_F(INFO, "Cound not find function %s\n", sSymbol);
 	}
 	else {
 		pOldFunc = *(uintptr_t*)pFunctionPtr;
-		con->WriteF("Found %s at $p\n", sSymbol, pFunctionPtr);
+		LOG_F(INFO, "Found %s at $p\n", sSymbol, pFunctionPtr);
 	}
 }
 
@@ -64,7 +65,7 @@ void IATHook::Init(HMODULE hModule, void * pHook, uintptr_t pFunc)
 	pFunctionPtr = pFunc;
 
 	pOldFunc = *(uintptr_t*)pFunctionPtr;
-	con->WriteF("Manually set pointer to %p\n", pFunctionPtr);
+	LOG_F(INFO, "Manually set pointer to %p\n", pFunctionPtr);
 }
 
 //stole this off the interwebz :D
@@ -81,8 +82,7 @@ void** IATHook::FindInIAT(const char* sFunction, HMODULE hModule, Console * con)
 
 	if (img_dos_headers->e_magic != IMAGE_DOS_SIGNATURE)
 	{
-		if(con)
-			con->Write("ERROR: e_magic is not a valid DOS signature\n");
+		LOG_F(INFO, "ERROR: e_magic is not a valid DOS signature\n");
 	}
 		
 
@@ -94,7 +94,7 @@ void** IATHook::FindInIAT(const char* sFunction, HMODULE hModule, Console * con)
 			const intptr_t nmod_func_name = (intptr_t)mod_func_name;
 			if (nmod_func_name >= 0)
 			{
-				con->WriteF("Read function %s\n", mod_func_name);
+				LOG_F(INFO, "Read function %s\n", mod_func_name);
 				if (!::strcmp(sFunction, mod_func_name)) 
 				{
 					return func_idx + (void**)(iid->FirstThunk + (size_t)hModule);

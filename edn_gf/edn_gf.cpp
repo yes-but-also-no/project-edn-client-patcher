@@ -6,6 +6,7 @@
 #include "FPacketSender.h"
 #include "Interface.h"
 #include "NCWnd.h"
+#include "UGFBoss.h"
 
 // Function to exit the game
 _RequestExit RequestExit;
@@ -13,6 +14,7 @@ _RequestExit RequestExit;
 // Main thread for our patches
 DWORD WINAPI EdnGfThread(HMODULE hModule) 
 {
+
 	// Activate UI
 	Interface ui = Interface();
 
@@ -22,13 +24,34 @@ DWORD WINAPI EdnGfThread(HMODULE hModule)
 	// Get the packet sender
 	LoadPacketSender(moduleBase);
 
+	// Get module for nwindow
+	uintptr_t nwin = (uintptr_t)GetModuleHandle(L"NWindow.dll");
+
+	// Wait until its loaded
+	while (nwin == NULL) {
+		Sleep(5);
+		nwin = (uintptr_t)GetModuleHandle(L"NWindow.dll");
+	}
+
 	// Hook NWindow.dll External AddEventInternal
-	HookAddEventInternal((uintptr_t)GetModuleHandle(L"NWindow.dll"));
+	HookAddEventInternal(nwin);
 
 	// cleanup & eject
-#ifndef _DEBUG
-	ui.~Interface();
+#ifdef _DEBUG
+
+	// Hook packets
+	HookOnPacket(moduleBase);
+
+	// Main loop
+	while (ui.bRunning) {
+		Sleep(5);
+	}
+
 #endif
+
+	ui.~Interface();
+
+	UnHookAddEventInternal();
 	
 	FreeLibraryAndExitThread(hModule, 0);
 	

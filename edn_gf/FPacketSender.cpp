@@ -11,9 +11,9 @@ void LoadPacketSender(uintptr_t moduleBase)
 	const UINT offset = 0x1e7a0;
 
 	// Console info
-	g_pFace->con.Write("[===================================================================]\n");
-	g_pFace->con.Write("Aquiring handle to GPacketSender...\n");
-	g_pFace->con.Write("[===================================================================]\n");
+	LOG_F(INFO, "[===================================================================]\n");
+	LOG_F(INFO, "Aquiring handle to GPacketSender...\n");
+	LOG_F(INFO, "[===================================================================]\n");
 
 	uintptr_t packetSenderBase = moduleBase + offset;
 
@@ -26,7 +26,7 @@ void LoadPacketSender(uintptr_t moduleBase)
 	GPacketSender.SendCConnectClient = (FPacketSender::_SendCConnectClient)(packetSenderBase + 0x3C3F0);
 
 	// Console info
-	g_pFace->con.Write("[===================================================================]\n");
-	g_pFace->con.Write("Done!\n");
-	g_pFace->con.Write("[===================================================================]\n");
+	LOG_F(INFO, "[===================================================================]\n");
+	LOG_F(INFO, "Done!\n");
+	LOG_F(INFO, "[===================================================================]\n");
 }

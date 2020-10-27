@@ -46,8 +46,7 @@ void __cdecl hAddEventInternal(float curTime, int eventId, int param_3, void * p
 	// TODO: Debug UI with status view
 	if (g_pFace)
 	{
-		g_pFace->con.WriteF("Add event internal: [%f] [%d] [%d] [%d] [%d] [%d]\n", curTime, eventId, param_3, param_4, param_5, param_6);
-
+		LOG_F(1, "Add event internal: [%f] [%d] [%d] [%d] [%d] [%d]\n", curTime, eventId, param_3, param_4, param_5, param_6);
 	}
 
 	// Login event
@@ -58,7 +57,7 @@ void __cdecl hAddEventInternal(float curTime, int eventId, int param_3, void * p
 
 		// Find the user name and pass
 		wchar_t* user = *(wchar_t**)(*dataAddr + 0x38);
-		g_pFace->con.WriteF("Login request: %s\n", user);
+		LOG_F(1, "Login request: %s\n", user);
 
 		wchar_t* pass = *(wchar_t**)(*dataAddr + 0x50);
 
@@ -89,9 +88,9 @@ void __cdecl hAddEventInternal(float curTime, int eventId, int param_3, void * p
 void HookDispatchWndMsg(uintptr_t moduleBase)
 {
 	// Console info
-	g_pFace->con.Write("[===================================================================]\n");
-	g_pFace->con.Write("Hooking into UGFBoss::SetState...\n");
-	g_pFace->con.Write("[===================================================================]\n");
+	LOG_F(INFO, "[===================================================================]\n");
+	LOG_F(INFO, "Hooking into UGFBoss::SetState...\n");
+	LOG_F(INFO, "[===================================================================]\n");
 
 	// Pointer to vtable entry
 	uintptr_t pDispatchWndMsg = moduleBase + 0x108ef8;
@@ -110,9 +109,9 @@ void HookDispatchWndMsg(uintptr_t moduleBase)
 	NCWnd::FindChildControl = (NCWnd::_FindChildControl)(moduleBase + 0x38cb0);
 
 	// Console info
-	g_pFace->con.Write("[===================================================================]\n");
-	g_pFace->con.Write("Done!\n");
-	g_pFace->con.Write("[===================================================================]\n");
+	LOG_F(INFO, "[===================================================================]\n");
+	LOG_F(INFO, "Done!\n");
+	LOG_F(INFO, "[===================================================================]\n");
 }
 
 void HookAddEventInternal(uintptr_t moduleBase) 

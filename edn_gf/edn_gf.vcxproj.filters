@@ -33,6 +33,12 @@
     <Filter Include="game_classes\NCWnd">
       <UniqueIdentifier>{53c30f04-f028-473f-a294-d2e40d2f0866}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game_classes\UGFBoss">
+      <UniqueIdentifier>{dd550ac1-4419-4720-9367-15f99b8a4ce2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="loguru">
+      <UniqueIdentifier>{394827a6-9b60-4966-8daf-1a4e04f45680}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mem.h">
@@ -68,6 +74,12 @@
     <ClInclude Include="NCWnd.h">
       <Filter>game_classes\NCWnd</Filter>
     </ClInclude>
+    <ClInclude Include="UGFBoss.h">
+      <Filter>game_classes\UGFBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="loguru.hpp">
+      <Filter>loguru</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="edn_gf.cpp">
@@ -102,6 +114,12 @@
     </ClCompile>
     <ClCompile Include="NCWnd.cpp">
       <Filter>game_classes\NCWnd</Filter>
+    </ClCompile>
+    <ClCompile Include="UGFBoss.cpp">
+      <Filter>game_classes\UGFBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="loguru.cpp">
+      <Filter>loguru</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -13,10 +13,43 @@ bool initialized = false;
 static char userEntry[20];
 static char passEntry[20];
 
+// Input handler
+bool Interface::HandleInput()
+{
+	if (GetAsyncKeyState(VK_F6) & 1)
+	{
+		Unload();
+	}
+	else if (GetAsyncKeyState(VK_F7) & 1)
+	{
+		//GPacketSender.SendCLog(GPacketSender.pThis, (wchar_t*)message);
+	}
+	else if (GetAsyncKeyState(VK_F8) & 1)
+	{
+		//RequestExit(0);
+	}
+	else if (GetAsyncKeyState(VK_F9) & 1)
+	{
+		//GPacketSender.SendCConnectClient(GPacketSender.pThis, &packet);
+	}
+	else
+		return true;
+}
+
+void DuplicateToConsole(void* user_data, const loguru::Message& message)
+{
+	Console* console = reinterpret_cast<Console*>(user_data);
+	console->WriteF("%s%s", message.prefix, message.message);
+}
+
 // Constructor
 Interface::Interface()
 {
 	Init();
+
+	loguru::add_file("edn.log", loguru::Append, loguru::Verbosity_INFO);
+	loguru::add_callback("console_logger",
+		DuplicateToConsole, &con, loguru::Verbosity_MAX);
 }
 
 // Clean on shutdown
@@ -83,7 +116,7 @@ void Interface::TryLogin()
 void Interface::PrintIntro()
 {
 	// Console info
-	con.Write("[===================================================================]\n");
-	con.Write("Activating Exteel.Net client patches...\n");
-	con.Write("[===================================================================]\n");
+	LOG_F(INFO, "[===================================================================]\n");
+	LOG_F(INFO, "Activating Exteel.Net client patches...\n");
+	LOG_F(INFO, "[===================================================================]\n");
 }

@@ -3,6 +3,7 @@
 #include <string>
 #include "Memory.h"
 #include "Console.h"
+#include "loguru.hpp"
 
 class Interface
 {
@@ -14,6 +15,7 @@ public:
 
 	Console con;
 	void TryLogin();
+	bool HandleInput();
 
 private:
 	void PrintIntro();
